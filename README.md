@@ -6,8 +6,8 @@ Starts the demo application Easytravel, a load generator, and an instance with E
 
 ## Prerequisites
 * Make sure you have [HashiCorp](http://www.hashicorp.com)s [Packer](http://www.packer.io) (used for creating images) and [HashiCorp](http://www.hashicorp.com)s [Terraform](http://www.terraform.io) (used for provisioning the cloud infrastructure components) installed
-* Have your Dynatrace environment ID and token ready
-* Have your AWS credentials and an AWS EC2 keypair ready
+* Have your Dynatrace environment ID and API token ready (learn more [here](https://www.dynatrace.com/support/help/get-started/introduction/why-do-i-need-an-access-token-and-an-environment-id/?_ga=2.98498396.219005478.1522220422-2076053113.1510299770))
+* Have your AWS credentials and an AWS EC2 keypair ready (learn more [here](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys))
 
 ## Instructions
 Clone the repository
@@ -37,7 +37,8 @@ private_key_file = "<PATH_TO_PRIVATE_KEY_FILE>"
 
 Build the AMIs with [Packer](http://www.packer.io)
 ```sh
-$ cd packer
+$ pwd
+~/TestBed-UserSessionExport/packer
 $ packer build easytravel.json
 ... (output emitted) ...
 $ packer build elastic.json
@@ -48,7 +49,8 @@ $ packer build loadgenerator.json
 
 Run [Terraform](http://www.terraform.io)
 ```sh
-$ cd terraform
+$ pwd
+~/TestBed-UserSessionExport/terraform
 $ terraform plan
 ... (output emitted) ...
 $ terraform apply

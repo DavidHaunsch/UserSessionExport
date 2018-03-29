@@ -16,15 +16,6 @@ $ git clone https://github.com/dynatrace-innovationlab/Testbed-UserSessionExport
 $ cd Testbed-UserSessionExport
 ```
 
-Provide Dynatrace environment ID and token in `files/installDynatraceOneAgent.sh`
-```sh
-$ head -n 4 files/installDynatraceOneAgent.sh
-#!/bin/bash
-
-ENVIRONMENT_ID=<ENVIRONMENT_ID>
-TOKEN=<TOKEN>
-```
-
 Provide your AWS credentials in a [Shared credentials file](https://www.terraform.io/docs/providers/aws/index.html#shared-credentials-file)
 ```sh
 $ cat ~/.aws/credentials
@@ -33,22 +24,14 @@ aws_access_key_id=<AWS_ACCES_KEY_ID>
 aws_secret_access_key=<AWS_SECRET_ACCESS_KEY>
 ```
 
-Provide the AWS region, the instance flavor, and the AWS keypair name in `terraform/aws_setup.tf`
+Provide the AWS region, the instance flavor, the AWS keypair name, the Dynatrace environment ID, and Dynatrace API token in `terraform.tfvars`
 ```sh
-# e.g. "us-west-1"
-provider "aws" {
-  region = "<REGION>"
-}
-
-# e.g. "t2.xlarge"
-variable "aws_flavor" {
-  default = "<FLAVOR>"
-}
-
-variable "aws_keypair_name" {
-  default = "<KEYPAIR_NAME>"
-}
-...
+aws_region = "<AWS_REGION>"
+aws_flavor = "<AWS_FLAVOR>"
+aws_keypair_name = "<AWS_KEYPAIR_NAME>"
+aws_owner = "<OWNER>"
+dynatrace_environment_id = "<DYNATRACE_ENVIRONMENT_ID>"
+dynatrace_api_token = "<DYNATRACE_API_TOKEN>"
 ```
 
 Build the AMIs with [Packer](http://www.packer.io)

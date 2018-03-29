@@ -16,7 +16,7 @@ $ git clone https://github.com/dynatrace-innovationlab/Testbed-UserSessionExport
 $ cd Testbed-UserSessionExport
 ```
 
-Provide your AWS credentials in a [Shared credentials file](https://www.terraform.io/docs/providers/aws/index.html#shared-credentials-file)
+Provide your AWS credentials in a [Shared credentials file](https://www.terraform.io/docs/providers/aws/index.html#shared-credentials-file) so both Packer and Terraform can make use of it and you don't have to provide your credentials in two different locations.
 ```sh
 $ cat ~/.aws/credentials
 [default]
@@ -24,7 +24,7 @@ aws_access_key_id=<AWS_ACCES_KEY_ID>
 aws_secret_access_key=<AWS_SECRET_ACCESS_KEY>
 ```
 
-Provide the AWS region, the instance flavor, the AWS keypair name, the Dynatrace environment ID, and Dynatrace API token in `terraform.tfvars`
+Provide the AWS region, the instance flavor, the AWS keypair name, the Dynatrace environment ID, Dynatrace API token, and the path to the private key file in `terraform/terraform.tfvars`
 ```sh
 aws_region = "<AWS_REGION>"
 aws_flavor = "<AWS_FLAVOR>"
@@ -32,6 +32,7 @@ aws_keypair_name = "<AWS_KEYPAIR_NAME>"
 aws_owner = "<OWNER>"
 dynatrace_environment_id = "<DYNATRACE_ENVIRONMENT_ID>"
 dynatrace_api_token = "<DYNATRACE_API_TOKEN>"
+private_key_file = "<PATH_TO_PRIVATE_KEY_FILE>"
 ```
 
 Build the AMIs with [Packer](http://www.packer.io)
@@ -51,6 +52,8 @@ $ cd terraform
 $ terraform plan
 ... (output emitted) ...
 $ terraform apply
+...
+xxx Elastic password = <PASSWORD>
 ...
 Apply complete! Resources: x added, x changed, x destroyed.
 

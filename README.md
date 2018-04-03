@@ -29,7 +29,7 @@ aws_secret_access_key=<AWS_SECRET_ACCESS_KEY>
 
 **3. Provide AWS and Dynatrace data**
 
-Provide the AWS region, the AWS instance flavor, the AWS keypair name, the Dynatrace environment ID, Dynatrace API token, and the path to the private key file in `terraform/vars.tf`
+Provide AWS region, AWS instance flavor, the AWS keypair name, the Dynatrace environment ID, Dynatrace API token, and the path to the private key file in `terraform/vars.tf`
 ```sh
 variable "aws_region" {
   default = ""
@@ -57,6 +57,8 @@ variable "private_key_file" {
 ```
 
 **4. Build the AMIs with [Packer](http://www.packer.io)**
+
+Set the correct AWS region in both ``easytravel.json`` and ``elastic.json``.
 
 ```sh
 $ pwd

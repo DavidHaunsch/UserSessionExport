@@ -11,12 +11,14 @@ Starts the demo application Easytravel, a load generator, and an instance with E
 
 ## Instructions
 **1. Clone the repository**
+
 ```sh
 $ git clone https://github.com/dynatrace-innovationlab/Testbed-UserSessionExport
 $ cd Testbed-UserSessionExport
 ```
 
 **2. Provide AWS access**
+
 Provide your AWS credentials in a [Shared credentials file](https://www.terraform.io/docs/providers/aws/index.html#shared-credentials-file) so both Packer and Terraform can make use of it and you don't have to provide credentials in two different locations.
 ```sh
 $ cat ~/.aws/credentials
@@ -26,6 +28,7 @@ aws_secret_access_key=<AWS_SECRET_ACCESS_KEY>
 ```
 
 **3. Provide AWS and Dynatrace data**
+
 Provide the AWS region, the AWS instance flavor, the AWS keypair name, the Dynatrace environment ID, Dynatrace API token, and the path to the private key file in `terraform/vars.tf`
 ```sh
 variable "aws_region" {
@@ -54,6 +57,7 @@ variable "private_key_file" {
 ```
 
 **4. Build the AMIs with [Packer](http://www.packer.io)**
+
 ```sh
 $ pwd
 ~/TestBed-UserSessionExport/packer
@@ -64,6 +68,7 @@ $ packer build elastic.json
 ```
 
 **5. Run [Terraform](http://www.terraform.io)**
+
 ```sh
 $ pwd
 ~/TestBed-UserSessionExport/terraform
@@ -80,10 +85,12 @@ Elastic = <PRIVATE_IP>/<PUBLIC_IP>
 ```
 
 **6. Finalize Dynatrace configuration**
+
 * Disable monitoring for ``uemload.jar`` in the Dynatrace UI in the settings. Otherwise the visits of the load generator won't be displayed correctly.
 * Follow the instructions [here][1] to enalbe the user session export to Elasticsearch.
 
 **7. Finalize Easytravel configuration**
+
 SSH into the ``easytravel`` instance and make sure the load generator service has been started successfully
 ```sh
 $ journalctl -fu uemload
@@ -96,6 +103,7 @@ $ sudo service uemload restart
 and check again.
 
 **8. Finalize Elasticsearch/Kibana configuration**
+
 Setup authentication of Elasticsearch and Kibana
 ```sh
 $ sudo /usr/share/elasticsearch/bin/x-pack/setup-passwords auto
@@ -104,6 +112,7 @@ $ sudo /usr/share/elasticsearch/bin/x-pack/setup-passwords auto
 Edit ``/etc/kibana/kibana.yml`` on the Elasticsearch/Kibana instance and set the generated password for the user ``elastic`` in ``elasticsearch.password``, and restart both Elasticsearch and Kibana.
 
 **9. Check that there is user session data in Kibana**
+
 ![User sessions in Kibana](https://github.com/dynatrace-innovationlab/Testbed-UserSessionExport/raw/master/kibanaUserSessions.png)
 
 [1]: https://www.dynatrace.com/news/blog/export-dynatrace-user-session-data-use-3rd-party-systems/

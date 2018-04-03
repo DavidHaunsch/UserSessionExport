@@ -2,8 +2,14 @@
   "builders": [
     {
       "type": "amazon-ebs",
-      "region": "us-west-1",
-      "source_ami": "ami-07585467",
+      "region": "us-west-2",
+      "source_ami_filter": {
+        "filters": {
+          "name": "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"
+        },
+        "owners": ["099720109477"],
+        "most_recent": true
+      },
       "instance_type": "t2.xlarge",
       "ssh_username": "ubuntu",
       "ami_name": "elastic-{{timestamp}}",

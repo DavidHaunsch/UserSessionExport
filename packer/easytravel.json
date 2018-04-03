@@ -20,11 +20,6 @@
   "provisioners": [
     {
       "type": "file",
-      "source" : "../files/easyTravelConfig.properties",
-      "destination": "/home/ubuntu/easyTravelConfig.properties"
-    },
-    {
-      "type": "file",
       "source" : "../files/easytravel.service",
       "destination": "/home/ubuntu/easytravel.service"
     },

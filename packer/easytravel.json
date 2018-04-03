@@ -1,0 +1,41 @@
+{
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "us-west-1",
+      "source_ami": "ami-07585467",
+      "instance_type": "t2.xlarge",
+      "ssh_username": "ubuntu",
+      "ami_name": "easytravel-{{timestamp}}",
+      "launch_block_device_mappings": [
+        {
+          "device_name": "/dev/sda1",
+          "volume_size": "20",
+          "volume_type": "gp2",
+          "delete_on_termination": "true"
+        }
+      ]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source" : "../files/easyTravelConfig.properties",
+      "destination": "/home/ubuntu/easyTravelConfig.properties"
+    },
+    {
+      "type": "file",
+      "source" : "../files/easytravel.service",
+      "destination": "/home/ubuntu/easytravel.service"
+    },
+    {
+      "type": "file",
+      "source" : "../files/uemload.service",
+      "destination": "/home/ubuntu/uemload.service"
+    },
+    {
+      "type": "shell",
+      "script": "easytravel_provision.sh"
+    }
+  ]
+}

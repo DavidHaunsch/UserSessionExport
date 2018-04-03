@@ -1,0 +1,8 @@
+[Unit]
+Description=uemload
+
+[Service]
+ExecStart=/usr/bin/java -jar /home/ubuntu/easytravel-2.0.0-x64/uemload.jar -server http://PUBLIC_IP:8080 -autorun true -uemLoadShutdownPort 12345 -random 25
+
+[Install]
+WantedBy=multi-user.target

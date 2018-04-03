@@ -1,0 +1,41 @@
+{
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "us-west-1",
+      "source_ami": "ami-07585467",
+      "instance_type": "t2.xlarge",
+      "ssh_username": "ubuntu",
+      "ami_name": "elastic-{{timestamp}}",
+      "launch_block_device_mappings": [
+        {
+          "device_name": "/dev/sda1",
+          "volume_size": "20",
+          "volume_type": "gp2",
+          "delete_on_termination": "true"
+        }
+      ]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "../files/elasticsearch.yml",
+      "destination": "/home/ubuntu/elasticsearch.yml"
+    },
+    {
+      "type": "file",
+      "source": "../files/kibana.yml",
+      "destination": "/home/ubuntu/kibana.yml"
+    },
+    {
+      "type": "file",
+      "source": "../files/sites-available-default",
+      "destination": "/home/ubuntu/sites-available-default"
+    },
+    {
+      "type": "shell",
+      "script": "elastic_provision.sh"
+    }
+  ]
+}

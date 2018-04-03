@@ -101,4 +101,7 @@ $ sudo /usr/share/elasticsearch/bin/x-pack/setup-passwords auto
 ```
 Edit ``/etc/kibana/kibana.yml`` on the Elasticsearch/Kibana instance and set the generated password for the user ``elastic`` in ``elasticsearch.password``, and restart both Elasticsearch and Kibana.
 
+9. Check that there is user session data in Kibana
+![alt text](https://raw.githubusercontent.com/dynatrace-innovationlab/Testbed-UserSessionExport/master/kibanaUserSessions.png)
+
 [1]: https://www.dynatrace.com/news/blog/export-dynatrace-user-session-data-use-3rd-party-systems/

@@ -73,8 +73,8 @@ Apply complete! Resources: x added, x changed, x destroyed.
 
 Outputs:
 
-Easytravel public IP = x.x.x.x
-Elastic public IP = x.x.x.x
+Easytravel = <PRIVATE_IP>/<PUBLIC_IP>
+Elastic = <PRIVATE_IP>/<PUBLIC_IP>
 ```
 
 6. Finalize Dynatrace configuration

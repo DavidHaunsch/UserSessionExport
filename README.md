@@ -1,5 +1,5 @@
 # Testbed-UserSessionExport
-Starts the demo application Easytravel, a load generator, and an instance with Elasticsearch and Kibana, where user session can be exported to, in AWS. Find the accompanying blog article [here](https://www.dynatrace.com/news/blog/export-dynatrace-user-session-data-use-3rd-party-systems/).
+Starts the demo application Easytravel, a load generator, and an instance with Elasticsearch and Kibana, where user session can be exported to, in AWS. Find the accompanying blog article [here][1].
 
 ## Architecture
 <add image here>
@@ -16,7 +16,7 @@ $ git clone https://github.com/dynatrace-innovationlab/Testbed-UserSessionExport
 $ cd Testbed-UserSessionExport
 ```
 
-2. Provide your AWS credentials in a [Shared credentials file](https://www.terraform.io/docs/providers/aws/index.html#shared-credentials-file) so both Packer and Terraform can make use of it and you don't have to provide your credentials in two different locations.
+2. Provide your AWS credentials in a [Shared credentials file](https://www.terraform.io/docs/providers/aws/index.html#shared-credentials-file) so both Packer and Terraform can make use of it and you don't have to provide credentials in two different locations.
 ```sh
 $ cat ~/.aws/credentials
 [default]
@@ -24,7 +24,7 @@ aws_access_key_id=<AWS_ACCES_KEY_ID>
 aws_secret_access_key=<AWS_SECRET_ACCESS_KEY>
 ```
 
-3. Provide the AWS region, the AWS instance flavor, the AWS keypair name, the Dynatrace environment ID, Dynatrace API token, and the path to the private key file in `terraform/terraform.tfvars`
+3. Provide the AWS region, the AWS instance flavor, the AWS keypair name, the Dynatrace environment ID, Dynatrace API token, and the path to the private key file in `terraform/vars.tf`
 ```sh
 variable "aws_region" {
   default = ""
@@ -78,12 +78,27 @@ Elastic = <PRIVATE_IP>/<PUBLIC_IP>
 ```
 
 6. Finalize Dynatrace configuration
-Disable monitoring for ``uemload.jar`` in the Dynatrace settings. Otherwise the visits of the load generator won't be displayed correctly.
+* Disable monitoring for ``uemload.jar`` in the Dynatrace UI in the settings. Otherwise the visits of the load generator won't be displayed correctly.
+* Follow the instructions [here][1] to enalbe the user session export to Elasticsearch.
 
-7. Finalize Elasticsearch/Kibana configuration
+7. Finalize Easytravel configuration
+SSH into the ``easytravel`` instance and make sure the load generator service has been started successfully
+```sh
+$ journalctl -fu uemload
+... (check for errors) ...
+```
+If you encounter errors, restart the service
+```sh
+$ sudo service uemload restart
+```
+and check again.
+
+8. Finalize Elasticsearch/Kibana configuration
 Setup authentication of Elasticsearch and Kibana
 ```sh
 $ sudo /usr/share/elasticsearch/bin/x-pack/setup-passwords auto
 ... (output omitted) ...
 ```
-Edit ``/etc/kibana/kibana.yml`` on the Elasticsearch/Kibana instance and set the generated password for the user ``elastic`` in ``elasticsearch.password``.
+Edit ``/etc/kibana/kibana.yml`` on the Elasticsearch/Kibana instance and set the generated password for the user ``elastic`` in ``elasticsearch.password``, and restart both Elasticsearch and Kibana.
+
+[1]: https://www.dynatrace.com/news/blog/export-dynatrace-user-session-data-use-3rd-party-systems/

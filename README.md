@@ -74,6 +74,8 @@ $ packer build elastic.json
 ```sh
 $ pwd
 ~/TestBed-UserSessionExport/terraform
+$ terraform init
+... (output emitted) ...
 $ terraform plan
 ... (output emitted) ...
 $ terraform apply
@@ -86,12 +88,7 @@ Easytravel = <PRIVATE_IP>/<PUBLIC_IP>
 Elastic = <PRIVATE_IP>/<PUBLIC_IP>
 ```
 
-**6. Finalize Dynatrace configuration**
-
-* Disable monitoring for ``uemload.jar`` in the Dynatrace UI in the settings. Otherwise the visits of the load generator won't be displayed correctly.
-* Follow the instructions [here][1] to enalbe the user session export to Elasticsearch.
-
-**7. Finalize Easytravel configuration**
+**6. Finalize Easytravel configuration**
 
 SSH into the ``easytravel`` instance and make sure the load generator service has been started successfully
 ```sh
@@ -104,7 +101,7 @@ $ sudo service uemload restart
 ```
 and check again.
 
-**8. Finalize Elasticsearch/Kibana configuration**
+**7. Finalize Elasticsearch/Kibana configuration**
 
 Setup authentication of Elasticsearch and Kibana
 ```sh
@@ -112,6 +109,11 @@ $ sudo /usr/share/elasticsearch/bin/x-pack/setup-passwords auto
 ... (output omitted) ...
 ```
 Edit ``/etc/kibana/kibana.yml`` on the Elasticsearch/Kibana instance and set the generated password for the user ``elastic`` in ``elasticsearch.password``, and restart both Elasticsearch and Kibana.
+
+**8. Finalize Dynatrace configuration**
+
+* Disable monitoring for ``uemload.jar`` in the Dynatrace UI in the settings. Otherwise the visits of the load generator won't be displayed correctly.
+* Follow the instructions [here][1] to enalbe the user session export to Elasticsearch.
 
 **9. Check that there is user session data in Kibana**
 

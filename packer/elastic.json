@@ -25,21 +25,6 @@
   ],
   "provisioners": [
     {
-      "type": "file",
-      "source": "../files/elasticsearch.yml",
-      "destination": "/home/ubuntu/elasticsearch.yml"
-    },
-    {
-      "type": "file",
-      "source": "../files/kibana.yml",
-      "destination": "/home/ubuntu/kibana.yml"
-    },
-    {
-      "type": "file",
-      "source": "../files/sites-available-default",
-      "destination": "/home/ubuntu/sites-available-default"
-    },
-    {
       "type": "shell",
       "script": "elastic_provision.sh"
     }

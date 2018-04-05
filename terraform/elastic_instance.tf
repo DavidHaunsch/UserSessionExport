@@ -26,10 +26,13 @@ resource "aws_instance" "elastic" {
   provisioner "remote-exec" {
     inline = [
       "wget -nv -O Dynatrace-OneAgent.sh \"https://${var.dynatrace_environment_id}.live.dynatrace.com/api/v1/deployment/installer/agent/unix/default/latest?Api-Token=${var.dynatrace_api_token}&arch=x86&flavor=default\"",
-      "sudo /bin/sh Dynatrace-OneAgent.sh  APP_LOG_CONTENT_ACCESS=1", 
-      "sudo sed -i 's/PRIVATE_IP/${aws_instance.elastic.private_ip}/g' /etc/elasticsearch/elasticsearch.yml",
-      "sudo sed -i 's/PRIVATE_IP/${aws_instance.elastic.private_ip}/g' /etc/kibana/kibana.yml",
-      "sudo sed -i 's/PRIVATE_IP/${aws_instance.elastic.private_ip}/g' /etc/nginx/sites-available/default",
+      "sudo /bin/sh Dynatrace-OneAgent.sh APP_LOG_CONTENT_ACCESS=1", 
+      "sudo sed -i 's/#network.host.*/network.host: ${aws_instance.elastic.private_ip}/' /etc/elasticsearch/elasticsearch.yml",
+      "sudo sed -i 's/#http.port.*/http.port: 9200/' /etc/elasticsearch/elasticsearch.yml",
+      "sudo sed -i 's/#server.port.*/server.port: 5601/' /etc/kibana/kibana.yml",
+      "sudo sed -i 's/#server.host.*/server.host: ${aws_instance.elastic.private_ip}/' /etc/kibana/kibana.yml",
+      "sudo sed -i 's/#elasticsearch.url.*/elasticsearch.url: \"http:\/\/${aws_instance.elastic.private_ip}:9200\"/' /etc/kibana/kibana.yml",
+      "sudo sed -i 's/try_files.*/proxy_pass http://${aws_instance.elastic.private_ip}:5601;/' /etc/nginx/sites-available/default",
       "sudo service elasticsearch start",
       "sudo service kibana start",
       "sudo service nginx start"

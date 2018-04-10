@@ -1,8 +1,0 @@
-[Unit]
-Description=easytravel
-
-[Service]
-ExecStart=/home/ubuntu/easytravel-2.0.0-x64/weblauncher/weblauncher.sh UEM Standard
-
-[Install]
-WantedBy=multi-user.target

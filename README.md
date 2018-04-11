@@ -90,6 +90,8 @@ Sock Shop = <PRIVATE_IP>/<PUBLIC_IP>
 
 **6. Check that there is user session data in Kibana**
 
+* You need to create an index pattern in Kibana to be able to browse the data. The index where data is sent to has already been configured in step 5.
+
 ![User sessions in Kibana](https://github.com/dynatrace-innovationlab/Testbed-UserSessionExport/raw/master/kibanaUserSessions.png)
 
 **7. Stop demo environment**

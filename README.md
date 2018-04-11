@@ -2,7 +2,7 @@
 Starts the demo application [Sock Shop](https://microservices-demo.github.io/), a load generator using [CasperJS](http://casperjs.org), and an instance with Elasticsearch and Kibana, where user session can be exported to, in AWS. Find an accompanying blog article about Dynatrace user session export [here][1].
 
 ## Prerequisites
-* Make sure you have [HashiCorp](http://www.hashicorp.com)s [Terraform](http://www.terraform.io) (used for provisioning the cloud infrastructure components) installed
+* Make sure you have [HashiCorp](http://www.hashicorp.com)s [Terraform](http://www.terraform.io) installed
 * Have your Dynatrace environment ID and API token ready (learn more [here](https://www.dynatrace.com/support/help/get-started/introduction/why-do-i-need-an-access-token-and-an-environment-id/?_ga=2.98498396.219005478.1522220422-2076053113.1510299770))
 * Have your AWS credentials and an AWS EC2 keypair ready (learn more [here](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys))
 
@@ -16,7 +16,7 @@ $ cd Testbed-UserSessionExport
 
 **2. Provide AWS access**
 
-Provide your AWS credentials in a [Shared credentials file](https://www.terraform.io/docs/providers/aws/index.html#shared-credentials-file) so both Packer and Terraform can make use of it and you don't have to provide credentials in two different locations.
+Provide your AWS credentials in a [Shared credentials file](https://www.terraform.io/docs/providers/aws/index.html#shared-credentials-file) so Terraform can use it.
 
 ```sh
 $ cat ~/.aws/credentials
@@ -85,7 +85,8 @@ Sock Shop = <PRIVATE_IP>/<PUBLIC_IP>
 
 **5. Finalize Dynatrace configuration**
 
-* Follow the instructions [here][1] to enalbe the user session export to Elasticsearch.
+* In Dynatrace you should see an Application with steady load and user sessions.
+* Follow the instructions [here][1] to enable the user session export to Elasticsearch in Dynatrace.
 
 **6. Check that there is user session data in Kibana**
 

@@ -1,6 +1,6 @@
 resource "aws_instance" "loadgen" {
   ami = "${data.aws_ami.ubuntu.id}"
-  instance_type = "${var.aws_flavor}"
+  instance_type = "${var.aws_flavor_loadgen}"
   key_name = "${var.aws_keypair_name}"
   subnet_id= "${aws_subnet.uemload.id}"
   associate_public_ip_address = true
@@ -14,6 +14,11 @@ resource "aws_instance" "loadgen" {
     type = "ssh"
     user = "ubuntu"
     private_key = "${file("${var.private_key_file}")}"
+  }
+
+  provisioner "file" {
+    source = "../files/loadgen.sh"
+    destination = "/home/ubuntu/loadgen.sh"
   }
 
   provisioner "file" {
@@ -37,8 +42,8 @@ resource "aws_instance" "loadgen" {
       "git clone git://github.com/casperjs/casperjs.git",
       "sudo ln -sf /home/ubuntu/casperjs/bin/casperjs /usr/local/bin/casperjs",
       "sed -i 's/PUBLIC_IP/${aws_instance.sockshop.public_ip}/g' /home/ubuntu/*.js",
-      "casperjs /home/ubuntu/iphone8.js",
-      "casperjs /home/ubuntu/macos.js"
+      "chmod +x /home/ubuntu/loadgen.sh",
+      "echo \"* * * * * /home/ubuntu/loadgen.sh\" | crontab -"
     ]
   }
 }

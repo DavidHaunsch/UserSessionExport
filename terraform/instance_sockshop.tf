@@ -1,6 +1,6 @@
 resource "aws_instance" "sockshop" {
   ami = "${data.aws_ami.ubuntu.id}"
-  instance_type = "${var.aws_flavor}"
+  instance_type = "${var.aws_flavor_sockshop}"
   key_name = "${var.aws_keypair_name}"
   subnet_id= "${aws_subnet.uemload.id}"
   associate_public_ip_address = true

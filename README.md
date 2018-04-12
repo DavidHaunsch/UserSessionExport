@@ -1,6 +1,10 @@
 # Testbed-UserSessionExport
 Starts the demo application [Sock Shop](https://microservices-demo.github.io/), a load generator using [CasperJS](http://casperjs.org), and an instance with Elasticsearch and Kibana, where user session can be exported to, in AWS. Find an accompanying blog article about Dynatrace user session export [here][1].
 
+## Overview
+
+![Testbed overview](https://github.com/dynatrace-innovationlab/Testbed-UserSessionExport/raw/master/overview.png)
+
 ## Prerequisites
 * Make sure you have [HashiCorp](http://www.hashicorp.com)s [Terraform](http://www.terraform.io) installed
 * Have your Dynatrace environment ID and API token ready (learn more [here](https://www.dynatrace.com/support/help/get-started/introduction/why-do-i-need-an-access-token-and-an-environment-id/?_ga=2.98498396.219005478.1522220422-2076053113.1510299770))
@@ -90,7 +94,7 @@ Sock Shop = <PRIVATE_IP>/<PUBLIC_IP>
 
 **6. Check that there is user session data in Kibana**
 
-* You need to create an index pattern in Kibana to be able to browse the data. The index where data is sent to has already been configured in step 5.
+* You need to create an index pattern in Kibana to be able to browse the data. The index to which data is sent has been configured in step 5.
 
 ![User sessions in Kibana](https://github.com/dynatrace-innovationlab/Testbed-UserSessionExport/raw/master/kibanaUserSessions.png)
 

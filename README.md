@@ -7,7 +7,7 @@ Starts the demo application [Sock Shop](https://microservices-demo.github.io/), 
 
 ## Prerequisites
 * Make sure you have [HashiCorp](http://www.hashicorp.com)s [Terraform](http://www.terraform.io) installed
-* Have your Dynatrace SaaS environment ID and API token ready (learn more [here](https://www.dynatrace.com/support/help/get-started/introduction/why-do-i-need-an-access-token-and-an-environment-id/?_ga=2.98498396.219005478.1522220422-2076053113.1510299770))
+* Have your Dynatrace SaaS ([Free trial](https://www.dynatrace.com/trial)) environment ID and API token ready (learn more [here](https://www.dynatrace.com/support/help/get-started/introduction/why-do-i-need-an-access-token-and-an-environment-id/?_ga=2.98498396.219005478.1522220422-2076053113.1510299770))
 * Have your AWS credentials and an AWS EC2 keypair ready (learn more [here](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys))
 
 ## Instructions

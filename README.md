@@ -31,41 +31,7 @@ aws_secret_access_key=<AWS_SECRET_ACCESS_KEY>
 
 **3. Provide AWS and Dynatrace data**
 
-Provide AWS region, the AWS keypair name, the Dynatrace environment ID, Dynatrace API token, and the path to the private key file in `terraform/vars.tf`. Adapt the recommended AWS instance flavors, if needed.
-
-```sh
-variable "aws_region" {
-  default = ""
-}
-
-variable "aws_flavor_elastic" {
-  default = "t2.small"
-}
-
-variable "aws_flavor_loadgen" {
-  default = "t2.xlarge"
-}
-
-variable "aws_flavor_sockshop" {
-  default = "t2.xlarge"
-}
-
-variable "aws_keypair_name" {
-  default = ""
-}
-
-variable "dynatrace_environment_id" {
-  default = ""
-}
-
-variable "dynatrace_api_token" {
-  default = ""
-}
-
-variable "private_key_file" {
-  default = ""
-}
-```
+Provide AWS region, the AWS keypair name, the Dynatrace environment ID, Dynatrace API token, and the path to the private key file (e.g. "~/.ssh/key.pem") in `terraform/vars.tf`. Adapt the recommended AWS instance flavors, if needed.
 
 **4. Run [Terraform](http://www.terraform.io)**
 

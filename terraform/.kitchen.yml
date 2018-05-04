@@ -1,0 +1,45 @@
+---
+driver:
+  name: terraform
+
+provisioner:
+  name: terraform
+
+platforms:
+  - name: ubuntu
+
+transport:
+  name: ssh
+  ssh_key: ~/.ssh/uemload.pem
+
+verifier:
+  name: terraform
+
+suites:
+  - name: default
+    verifier:
+      groups:
+        - name: loadgen
+          attributes:
+            sockshop_ip: sockshop_public_ip
+          controls:
+            - loadgen_running
+          hostnames: loadgen_public_ip
+          username: ubuntu  
+        - name: sockshop
+          controls:
+            - sockshop_running
+          hostnames: sockshop_public_ip
+          username: ubuntu
+        - name: elastic
+          controls:
+            - elastic_running
+          hostnames: elastic_public_ip
+          username: ubuntu
+        - name: local
+          attributes:
+            loadgen_ip: loadgen_public_ip
+            sockshop_ip: sockshop_public_ip
+            elastic_ip: elastic_public_ip
+          controls:
+            - services_accessible

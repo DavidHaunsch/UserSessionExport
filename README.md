@@ -14,8 +14,8 @@ Starts the demo application [Sock Shop](https://microservices-demo.github.io/), 
 **1. Clone the repository**
 
 ```sh
-$ git clone https://github.com/dynatrace-innovationlab/Testbed-UserSessionExport
-$ cd Testbed-UserSessionExport
+$ git clone https://github.com/dynatrace-innovationlab/UserSessionExport
+$ cd UserSessionExport
 ```
 
 **2. Provide AWS access**
@@ -37,7 +37,7 @@ Provide AWS region, the AWS keypair name, the Dynatrace environment ID, Dynatrac
 
 ```sh
 $ pwd
-~/TestBed-UserSessionExport/terraform
+~/UserSessionExport/terraform
 $ terraform init
 ... (output emitted) ...
 $ terraform plan
@@ -71,6 +71,25 @@ In order to shutdown the demo environment and get rid of all created artefacts y
 $ pwd
 ~/TestBed-UserSessionExport/terraform
 $ terraform destroy
+```
+
+**8. Execute tests**
+Prerequisites: 
+* Make sure you have [Ruby](https://www.ruby-lang.org/) installed
+* As in step 3, provide the path to the private key file (e.g. "~/.ssh/key.pem") in `terraform/.kitchen.yml`
+
+```sh
+$ pwd
+~/UserSessionExport/terraform
+$ gem install bundler
+... (output omitted) ...
+$ bundle install
+... (output omitted) ...
+$ bundle exec kitchen converge // setup test environment
+... (output omitted) ...
+$ bundle exec kitchen verify // run tests against environment
+... (output omitted) ...
+$ bundle exec ktichen destroy // destroy test environment
 ```
 
 [1]: https://www.dynatrace.com/news/blog/export-dynatrace-user-session-data-use-3rd-party-systems/

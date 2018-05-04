@@ -1,6 +1,7 @@
 # Configuration of AWS provider
 provider "aws" {
   region = "${var.aws_region}"
+  version = "~> 1.17"
 }
 
 data "aws_ami" "ubuntu" {

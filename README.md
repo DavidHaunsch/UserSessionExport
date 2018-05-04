@@ -86,11 +86,17 @@ $ gem install bundler
 ... (output omitted) ...
 $ bundle install
 ... (output omitted) ...
-$ bundle exec kitchen converge // setup test environment
+
+// setup test environment using kitchen-terraform
+$ bundle exec kitchen converge
 ... (output omitted) ...
-$ bundle exec kitchen verify // run tests against environment
+
+// run tests against said environment (can be repeated several times)
+$ bundle exec kitchen verify
 ... (output omitted) ...
-$ bundle exec ktichen destroy // destroy test environment
+
+// destroy test environment
+$ bundle exec kitchen destroy
 ```
 
 [1]: https://www.dynatrace.com/news/blog/export-dynatrace-user-session-data-use-3rd-party-systems/

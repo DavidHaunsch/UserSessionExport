@@ -74,6 +74,7 @@ $ terraform destroy
 ```
 
 **8. Execute tests**
+
 Prerequisites: 
 * Make sure you have [Ruby](https://www.ruby-lang.org/) installed
 * As in step 3, provide the path to the private key file (e.g. "~/.ssh/key.pem") in `terraform/.kitchen.yml`

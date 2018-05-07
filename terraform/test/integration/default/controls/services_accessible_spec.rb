@@ -35,9 +35,11 @@ control 'services_accessible' do
 
   describe http(sockshop_url) do
     its('status') { should cmp 200 }
+    its('body') { should include "WeaveSocks" }
   end
 
   describe http(elastic_url) do
     its('status') { should cmp 200 }
+    its('body') { should include "kibana" }
   end
 end

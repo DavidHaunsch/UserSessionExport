@@ -2,6 +2,10 @@ variable "aws_region" {
   default = "us-west-1"
 }
 
+variable "aws_prefix" {
+  default = "prefix"
+}
+
 variable "aws_flavor_elastic" {
   default = "t2.xlarge"
 }

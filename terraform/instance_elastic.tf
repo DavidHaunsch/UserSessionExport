@@ -7,7 +7,7 @@ resource "aws_instance" "elastic" {
   vpc_security_group_ids = ["${aws_security_group.elastic_sg.id}"]
 
   tags {
-    Name = "Elasticsearch and Kibana"
+    Name = "${var.aws_prefix} Elasticsearch and Kibana"
   }
 
   connection {

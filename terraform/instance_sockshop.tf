@@ -7,7 +7,7 @@ resource "aws_instance" "sockshop" {
   vpc_security_group_ids = ["${aws_security_group.sockshop_sg.id}"]
 
   tags {
-    Name = "Sock Shop"
+    Name = "${var.aws_prefix} Sock Shop"
   }
 
   connection {

@@ -7,7 +7,7 @@ resource "aws_instance" "loadgen" {
   vpc_security_group_ids = ["${aws_security_group.loadgen_sg.id}"]
 
   tags {
-    Name = "Load Generator"
+    Name = "${var.aws_prefix} Load Generator"
   }
 
   connection {

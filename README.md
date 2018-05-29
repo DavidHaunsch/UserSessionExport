@@ -3,7 +3,7 @@ Starts the demo application [Sock Shop](https://microservices-demo.github.io/), 
 
 ## Overview
 
-![Testbed overview](https://github.com/dynatrace-innovationlab/Testbed-UserSessionExport/raw/master/overview.png)
+![Testbed overview](https://github.com/dynatrace-innovationlab/Testbed-UserSessionExport/raw/master/assets/overview.png)
 
 ## Prerequisites
 * Make sure you have [HashiCorp](http://www.hashicorp.com)s [Terraform](http://www.terraform.io) installed
@@ -62,7 +62,7 @@ Sock Shop = <PRIVATE_IP>/<PUBLIC_IP>
 
 * You need to create an index pattern in Kibana to be able to browse the data. The index to which data is sent has been configured in step 5.
 
-![User sessions in Kibana](https://github.com/dynatrace-innovationlab/Testbed-UserSessionExport/raw/master/kibanaUserSessions.png)
+![User sessions in Kibana](https://github.com/dynatrace-innovationlab/Testbed-UserSessionExport/raw/master/assets/kibanaUserSessions.png)
 
 **7. Stop demo environment**
 In order to shutdown the demo environment and get rid of all created artefacts you need to manually remove the created AMIs and execute the following Terraform command.

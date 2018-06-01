@@ -1,0 +1,11 @@
+dist: trusty
+language: ruby
+rvm:
+  - 2.2
+gemfile: terraform/Gemfile
+
+before_install: cd terraform
+
+before_script: bundle exec kitchen converge
+script: bundle exec kitchen verify
+after_script: bundle exec kitchen destroy

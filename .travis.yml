@@ -5,7 +5,9 @@ rvm:
   - 2.2
 gemfile: terraform/Gemfile
 
-before_install: cd terraform
+before_install: 
+- cd terraform
+- sudo apt get install terraform
 
 before_script: bundle exec kitchen converge
 script: bundle exec kitchen verify

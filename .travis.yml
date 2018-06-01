@@ -6,10 +6,12 @@ rvm:
 gemfile: terraform/Gemfile
 
 before_install: 
+- ssh-keygen -f ~/.ssh/cloud.key -t ecdsa -b 521
 - cd terraform
 - wget https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip
 - unzip terraform_0.11.7_linux_amd64.zip
 - sudo mv terraform /usr/bin/terraform
+- rm terraform_0.11.7_linux_amd64.zip
 
 before_script: bundle exec kitchen converge
 script: bundle exec kitchen verify

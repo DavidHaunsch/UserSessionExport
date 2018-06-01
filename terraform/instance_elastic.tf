@@ -1,7 +1,7 @@
 resource "aws_instance" "elastic" {
   ami = "${data.aws_ami.ubuntu.id}"
   instance_type = "${var.aws_flavor_elastic}"
-  key_name = "${var.aws_keypair_name}"
+  key_name = "${aws_key_pair.terraform.key_name}"
   subnet_id= "${aws_subnet.uemload.id}"
   associate_public_ip_address = true
   vpc_security_group_ids = ["${aws_security_group.elastic_sg.id}"]
@@ -13,7 +13,7 @@ resource "aws_instance" "elastic" {
   connection {
     type = "ssh"
     user = "ubuntu"
-    private_key = "${file("${var.private_key_file}")}"
+    private_key = "${file("~/.ssh/cloud.key")}"
   }
 
   provisioner "remote-exec" {

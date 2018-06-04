@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/dynatrace-innovationlab/UserSessionExport.svg?branch=master)](https://travis-ci.org/dynatrace-innovationlab/UserSessionExport)
+
 # UserSessionExport
 Starts the demo application [Sock Shop](https://microservices-demo.github.io/), a load generator using [CasperJS](http://casperjs.org), and an instance with Elasticsearch and Kibana, where user session can be exported to, in AWS. Find an accompanying blog article about Dynatrace user session export [here][1].
 

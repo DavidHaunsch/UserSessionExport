@@ -2,7 +2,7 @@ dist: trusty
 
 language: ruby
 rvm:
-  - 2.2
+  - 2.4
 gemfile: terraform/Gemfile
 
 before_install: 

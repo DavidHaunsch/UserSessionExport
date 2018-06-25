@@ -1,35 +1,27 @@
 variable "aws_region" {
-  default = "us-west-1"
+  default = "us-west-2"
 }
 
 variable "aws_prefix" {
-  default = "prefix"
+  default = "140518_qlik"
 }
 
 variable "aws_flavor_elastic" {
-  default = "t2.xlarge"
+  default = "m4.large"
 }
 
 variable "aws_flavor_loadgen" {
-  default = "t2.small"
+  default = "t2.medium"
 }
 
 variable "aws_flavor_sockshop" {
-  default = "t2.xlarge"
-}
-
-variable "aws_keypair_name" {
-  default = ""
+  default = "m4.xlarge"
 }
 
 variable "dynatrace_environment_id" {
-  default = ""
+  default = "dhn62753"
 }
 
 variable "dynatrace_api_token" {
-  default = ""
-}
-
-variable "private_key_file" {
-  default = ""
+  default = "6dWosABCReazI9fZoXLXY"
 }

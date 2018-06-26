@@ -67,5 +67,13 @@ pipeline {
 				}
 			}
 		}
+		
+		failure {
+			script {
+				withCredentials([string(credentialsId: 'e85a1bb2-96fa-42fa-8230-7decf949cef8', variable: 'emailRecipient')]) {
+					sendEmail(emailRecipient)
+				}
+			}
+		}
 	}
 }

@@ -10,15 +10,15 @@ pipeline {
 		}
 	}
 
-	triggers {
-		cron('H 0 * * *')
-	}
-
 	options {
 		disableConcurrentBuilds()
-		buildDiscarder(logRotator(numToKeepStr: ('50')))
+		buildDiscarder(logRotator(numToKeepStr: (env.BRANCH_NAME == 'master') ? '30' : '5'))
 		timeout(time: 60, unit: 'MINUTES')
 		timestamps()
+	}
+
+	triggers {
+		cron((env.BRANCH_NAME == 'master') ? 'H 0 * * *' : '')
 	}
 
 	stages {

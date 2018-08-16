@@ -13,7 +13,7 @@ pipeline {
 	options {
 		disableConcurrentBuilds()
 		buildDiscarder(logRotator(numToKeepStr: (env.BRANCH_NAME == 'master') ? '30' : '5'))
-		timeout(time: 60, unit: 'MINUTES')
+		timeout(time: 3, unit: 'HOURS')
 		timestamps()
 	}
 

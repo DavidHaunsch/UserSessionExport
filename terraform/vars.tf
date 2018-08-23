@@ -23,5 +23,5 @@ variable "dynatrace_environment_id" {
 }
 
 variable "dynatrace_api_token" {
-  default = "6dWosABCReazI9fZoXUHE"
+  default = "6dWosABCReazI9fZoXLXY"
 }

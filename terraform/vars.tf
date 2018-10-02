@@ -3,7 +3,7 @@ variable "aws_region" {
 }
 
 variable "aws_prefix" {
-  default = "140518_qlik"
+  default = "prefix"
 }
 
 variable "aws_flavor_elastic" {
@@ -18,10 +18,6 @@ variable "aws_flavor_sockshop" {
   default = "m4.xlarge"
 }
 
-variable "dynatrace_environment_id" {
-  default = "dhn62753"
-}
+variable "dynatrace_environment_id" {}
 
-variable "dynatrace_api_token" {
-  default = "6dWosABCReazI9fZoXLXY"
-}
+variable "dynatrace_api_token" {}

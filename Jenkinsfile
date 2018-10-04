@@ -10,6 +10,11 @@ pipeline {
 		}
 	}
 
+	environment {
+		TF_VAR_dynatrace_environment_id = credentials('d6451612-c2ca-48f4-9794-a14bd0dbac2c')
+		TF_VAR_dynatrace_api_token = credentials('fb65580b-235a-41be-af81-fffd06320fc4')
+	}
+	
 	options {
 		disableConcurrentBuilds()
 		buildDiscarder(logRotator(numToKeepStr: (env.BRANCH_NAME == 'master') ? '30' : '5'))

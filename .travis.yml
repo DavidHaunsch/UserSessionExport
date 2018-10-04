@@ -14,5 +14,9 @@ before_install:
 - rm terraform_0.11.7_linux_amd64.zip
 
 before_script: bundle exec kitchen converge
+
 script: bundle exec kitchen verify
+
 after_script: bundle exec kitchen destroy
+
+after_failure: bundle exec kitchen destroy
